@@ -228,25 +228,74 @@ const movies = [
   Scrivi una funzione per trovare il film più vecchio nell'array fornito.
 */
 
+const oldFilm = function () {
+  let oldiest = movies[0];
+  movies.forEach((movie) => {
+    if (parseInt(movie.Year) < parseInt(oldiest.Year)) {
+      oldiest = movie;
+    }
+  });
+  return oldiest;
+};
+console.log(oldFilm());
 /* ESERCIZIO 10
   Scrivi una funzione per ottenere il numero di film contenuti nell'array fornito.
 */
+const howManyFilm = function () {
+  let numberFilm = 0;
+  numberFilm = movies.length;
+  return numberFilm;
+};
+console.log(howManyFilm());
 
 /* ESERCIZIO 11 (map)
   Scrivi una funzione per creare un array con solamente i titoli dei film contenuti nell'array fornito.
 */
+const arrayOnlyName = function () {
+  let onlyName = [];
+  onlyName = movies.map((nome) => {
+    return nome.Title;
+  });
+  return onlyName;
+};
+console.log(arrayOnlyName());
 
 /* ESERCIZIO 12 (filter)
   Scrivi una funzione per ottenere dall'array fornito solamente i film usciti nel millennio corrente.
 */
+const millennialFilm = (array) => {
+  return array.filter((movie) => {
+    let isFilmMillennial = parseInt(movie.Year) > 1999;
+    return isFilmMillennial;
+  });
+};
+console.log(millennialFilm(movies));
 
 /* ESERCIZIO 13 (reduce)
   Scrivi una funzione per calcolare la somma di tutti gli anni in cui sono stati prodotti i film contenuti nell'array fornito.
 */
+const sumYear = (array) => {
+  return array.reduce((acc, curr) => acc + parseInt(curr.Year), 0);
+};
+console.log(sumYear(movies));
 
 /* ESERCIZIO 14 (find)
   Scrivi una funzione per ottenere dall'array fornito uno specifico film (la funzione riceve un imdbID come parametro).
 */
+const specificoFilm = (array, id) => {
+  let filmss = array.find((movie) => {
+    return movie.imdbID === id;
+  });
+  return filmss;
+};
+console.log(specificoFilm(movies, "tt4154756"));
 
 /* ESERCIZIO 15 (findIndex)
   Scrivi una funzione per ottenere dall'array fornito l'indice del primo film uscito nell'anno fornito come parametro.*/
+
+const specificoFilmIndice = (array, year) => {
+  return array.findIndex((movie) => {
+    return parseInt(movie.Year) === year;
+  });
+};
+console.log(specificoFilm(movies, 2019));
